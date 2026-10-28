@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grand Line Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07142b;--bg2:#10305c;--card:#fff6e0;--cardtxt:#3b2a14;--txt:#f4f8ff;--gold:#f7c948;--red:#e63946;--line:#1d4a7a;--wb:#ffffff}
+:root[data-theme=light]{--bg:#ffffff;--bg2:#e9f3ff;--txt:#0b2447;--line:#9cc3ea}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:Nunito,sans-serif;background:linear-gradient(var(--bg),var(--bg2));color:var(--txt);min-height:100vh}
+h1,h2,h3,.logo{font-family:'Pirata One',cursive;letter-spacing:1px}
+nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:18px;padding:12px 5%;background:var(--bg);border-bottom:4px solid var(--red);box-shadow:0 3px 0 var(--gold)}
+.logo{font-size:1.6rem;color:var(--gold);margin-right:auto}
+nav a{color:var(--txt);text-decoration:none;font-weight:700}nav a:hover{color:var(--gold)}
+button{cursor:pointer;font-family:inherit}
+#theme,#menu{background:var(--gold);border:0;border-radius:20px;padding:6px 12px;font-weight:700}
+#menu{display:none}
+section{padding:36px 5%;max-width:1100px;margin:auto;scroll-margin-top:64px}
+h2{font-size:2.4rem;color:var(--gold);margin-bottom:14px;text-shadow:2px 2px 0 var(--red)}
+.moustache{display:block;font-size:2.2rem;margin-top:6px}
+:root[data-theme=light] h2{color:var(--red);text-shadow:2px 2px 0 var(--gold)}
+:root[data-theme=light] #home h1 span{color:var(--red)}
+#home{background:radial-gradient(circle at 80% 30%,#ffffff22,transparent 55%)}
+#home{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding-top:40px;padding-bottom:30px}
+#home h1{font-size:clamp(2.6rem,7vw,4.5rem);line-height:1}
+#home h1 span{color:var(--gold)}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:700;margin:16px 10px 0 0;border:2px solid var(--gold)}
+.photo{width:260px;height:260px;border-radius:50%;border:6px solid var(--gold);object-fit:cover;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:6rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.skill{background:var(--card);color:var(--cardtxt);padding:14px;border-radius:10px;border:3px solid var(--cardtxt)}
+.bar{height:10px;background:#0002;border-radius:6px;margin-top:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--red)}
+.tools span,.tag{display:inline-block;background:var(--gold);color:#222;border-radius:12px;padding:2px 10px;margin:3px 3px 0 0;font-size:.8rem;font-weight:700}
+.poster{background:var(--card);color:var(--cardtxt);padding:16px;border:5px double var(--cardtxt);border-radius:6px;text-align:center;display:flex;flex-direction:column;box-shadow:6px 6px 0 #0006}
+.poster h3{font-size:1.9rem;color:var(--red)}.poster small{letter-spacing:3px;font-weight:700}
+.poster p{margin:10px 0;flex:1;font-size:.95rem}
+.poster a{color:var(--cardtxt);font-weight:700;margin:6px 8px 0}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+#search{flex:1;min-width:200px;padding:10px 14px;border-radius:8px;border:3px solid var(--gold);font-size:1rem}
+.chip{border:2px solid var(--gold);background:transparent;color:var(--txt);border-radius:20px;padding:6px 14px;font-weight:700}
+.chip.on{background:var(--gold);color:#222}
+#empty{display:none;text-align:center;padding:30px}
+.about{background:#0003;padding:18px;border-left:6px solid var(--gold);border-radius:6px;line-height:1.7}
+#chat{background:var(--card);color:var(--cardtxt);border:4px solid var(--cardtxt);border-radius:12px;overflow:hidden}
+#log{height:280px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:80%;padding:9px 13px;border-radius:12px;white-space:pre-wrap}
+.m.u{align-self:flex-end;background:var(--red);color:#fff}.m.b{background:#fff8e6;border:2px solid var(--cardtxt)}.m.e{background:#ffd6d6;border:2px solid var(--red)}
+#cf{display:flex;border-top:3px solid var(--cardtxt)}
+#cf input{flex:1;padding:12px;border:0;font-size:1rem;background:#fffdf5}
+#cf button{background:var(--gold);border:0;padding:0 22px;font-weight:700}
+.sugg{padding:8px 14px;border-top:2px dashed var(--cardtxt)}.sugg button{font-size:.8rem;margin:3px;padding:4px 10px;border:1px solid var(--cardtxt);border-radius:12px;background:transparent}
+footer{text-align:center;padding:16px;margin-top:20px;border-top:3px solid var(--gold)}
+.duo{max-width:1100px;margin:auto;padding:0 5%;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.duo section{padding:36px 0 20px;max-width:none}
+.about p+p{margin-top:10px}
+#skillGrid{grid-template-columns:1fr 1fr;gap:10px}.skill{padding:10px}
+#toolList{margin:6px 0 0}
+#contactBox{display:flex;flex-wrap:wrap;gap:10px 34px;align-items:center}#contactBox p{margin:0}
+#chatbot{padding-bottom:10px}
+@media(max-width:820px){.duo{grid-template-columns:1fr;gap:0}}
+@media(max-width:720px){#skillGrid{grid-template-columns:1fr 1fr}#home{grid-template-columns:1fr;text-align:center}.photo{margin:auto;width:200px;height:200px}
+#menu{display:block}nav a.l{display:none}nav.open{flex-wrap:wrap}nav.open a.l{display:block;width:100%}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <span class="logo">👒 <span id="navName"></span> ⚓</span>
+  <a class="l" href="#home">Home</a><a class="l" href="#about">About Me</a><a class="l" href="#skills">Skills</a>
+  <a class="l" href="#projects">Projects</a><a class="l" href="#contact">Contact</a><a class="l" href="#chatbot">AI Chatbot</a>
+  <button id="theme" title="Toggle theme">🌙 Night Sea</button><button id="menu">☰</button>
+</nav>
+
+<section id="home">
+  <div>
+    <p>👒 Ahoy! Welcome aboard. I'm</p>
+    <h1><span id="hName"></span></h1>
+    <p id="hTag" style="font-size:1.2rem;margin-top:12px"></p>
+    <span class="moustache" title="Whitebeard's crescent moustache">🌙</span><a class="btn" href="#projects">View My Treasure</a><a class="btn" id="gh" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <img class="photo" id="photo" src="luffy.jpg" alt="Luffy avatar" onerror="this.onerror=null;this.src='avatar.svg'">
+</section>
+
+<div class="duo">
+<section id="about"><h2>About Me — Crew Log</h2><div class="about" id="aboutTxt"></div></section>
+
+
+<section id="skills"><h2>Skills — Haki Levels</h2>
+  <div class="grid" id="skillGrid"></div>
+  <p style="margin-top:14px"><b>🛠 Tools:</b></p><div class="tools" id="toolList"></div>
+</section>
+</div>
+
+<section id="projects"><h2>My Projects — Bounty Board</h2>
+  <div class="tools"><input id="search" type="search" placeholder="🔍 Search by name or technology (Python, Quiz, Book...)"></div>
+  <div class="tools" id="chips"></div>
+  <div class="grid" id="cards"></div>
+  <p id="empty">☠️ No bounty found for that search. Try another keyword!</p>
+</section>
+
+<section id="contact"><h2>Contact — Send a Den Den Mushi</h2>
+  <div class="about" id="contactBox"></div>
+</section>
+
+<section id="chatbot"><h2>AI Chatbot — Ask the Navigator</h2>
+  <div id="chat">
+    <div id="log"><div class="m b">Yohoho! Ask me anything about this portfolio ⚓</div></div>
+    <div class="sugg" id="sugg"></div>
+    <form id="cf"><input id="ci" placeholder="Type your question..." autocomplete="off" maxlength="300"><button>Send</button></form>
+  </div>
+</section>
+<footer>© <span id="yr"></span> <span id="fName"></span> • Built with ❤️ and a Straw Hat 👒</footer>
+
+<script>
+/* ===== EDIT THIS: all your personal details live here ===== */
+const CONFIG = {
+  name: "Raghav Gattani",
+  tagline: "I'm going to be the King of Developers: a backend engineer with the strength of Whitebeard.",
+  about: "I'm Raghav, a B.Tech 2nd year student who dreams of becoming the King of Developers, a backend engineer as strong as Whitebeard, the Strongest Man in the World. Like a true pirate, I explore new technologies, build projects and use AI tools to level up my skills every day.",
+  education: "B.Tech, 2nd Year",
+  github: "https://github.com/Raghav-Gattani",
+  email: "luffy82732@gmail.com", phone: "", linkedin: "", location: "",
+  skills: [["HTML",80],["C++",70],["JavaScript",60],["Python",60],["Git & GitHub",50]],
+  tools: ["Claude","ChatGPT","OpenCode","Antigravity","Cursor AI","Vercel"],
+  projects: [
+    {title:"Python Programs Collection",tech:["Python","Factorial","Fibonacci","Dictionary"],desc:"Factorial, Fibonacci and Structure-to-Dictionary (a Pirate dataclass converted to a dict) programs with an updated README.",repo:"https://github.com/Raghav-Gattani/Python-Programs",live:""},
+    {title:"Messy Python Code Improvement",tech:["Python","AI","Refactoring"],desc:"A messy bounty-statistics script improved with AI: meaningful names, built-in functions sum/max/min, type hints, docstring and an empty-list check.",repo:"https://github.com/Raghav-Gattani/messy-code",live:""},
+    {title:"Bug Fixing Using Cursor AI",tech:["Python","Cursor AI","Debugging"],desc:"An average-bounty program had two bugs: the loop skipped the first item, and an empty list caused a ZeroDivisionError. Both were fixed using Cursor AI.",repo:"https://github.com/Raghav-Gattani/bug-fixing",live:""},
+    {title:"Interactive Quiz Application",tech:["HTML","CSS","JavaScript","Quiz"],desc:"A One Piece quiz with 8 questions, instant feedback, live score, progress bar and a final pirate rank.",repo:"https://github.com/Raghav-Gattani/quiz-app",live:"https://quiz-app-theta-ashy-30.vercel.app/"},
+    {title:"Book Reading List Application",tech:["HTML","CSS","JavaScript","Book","Vercel"],desc:"Add books, mark them read/unread, delete them and filter by status. Data is saved in localStorage so the list survives refreshes.",repo:"https://github.com/Raghav-Gattani/reading-list",live:"https://reading-list-gc4c.vercel.app/"}
+  ]
+};
+/* ========================================================= */
+const $=id=>document.getElementById(id);
+document.title=CONFIG.name+" | Portfolio";
+["navName","hName","fName"].forEach(i=>$(i).textContent=CONFIG.name);
+$("hTag").textContent=CONFIG.tagline;$("gh").href=CONFIG.github;$("yr").textContent=new Date().getFullYear();
+$("aboutTxt").innerHTML=`<p>${CONFIG.about}</p><p><b>🎓 Education:</b> ${CONFIG.education}</p>`;
+$("skillGrid").innerHTML=CONFIG.skills.map(([n,v])=>`<div class="skill"><b>${n}</b> — ${v}%<div class="bar"><i style="width:${v}%"></i></div></div>`).join("");
+$("toolList").innerHTML=CONFIG.tools.map(t=>`<span>${t}</span>`).join("");
+$("contactBox").innerHTML=`<p>📧 <a style="color:var(--gold)" href="mailto:${CONFIG.email}">${CONFIG.email}</a></p><p>💻 <a style="color:var(--gold)" href="${CONFIG.github}" target="_blank" rel="noopener">${CONFIG.github}</a></p>`;
+
+/* Theme */
+function setTheme(t){document.documentElement.dataset.theme=t;$("theme").textContent=t==="dark"?"🌙 Night Sea":"☀️ Sunny Day";try{localStorage.setItem("theme",t)}catch(e){}}
+let saved="dark";try{saved=localStorage.getItem("theme")||"dark"}catch(e){}
+setTheme(saved);
+$("theme").onclick=()=>setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark");
+$("menu").onclick=()=>$("nav").classList.toggle("open");
+document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>$("nav").classList.remove("open"));
+
+/* Projects + search/filter */
+let tag="All";
+const tags=["All",...new Set(CONFIG.projects.flatMap(p=>p.tech))];
+function renderChips(){$("chips").innerHTML=tags.map(t=>`<button class="chip ${t===tag?"on":""}" data-t="${t}">${t}</button>`).join("");
+  document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{tag=c.dataset.t;renderChips();renderCards()})}
+function renderCards(){
+  const q=$("search").value.trim().toLowerCase();
+  const list=CONFIG.projects.filter(p=>(tag==="All"||p.tech.includes(tag))&&(!q||(p.title+" "+p.desc+" "+p.tech.join(" ")).toLowerCase().includes(q)));
+  $("cards").innerHTML=list.map(p=>`<article class="poster"><small>WANTED</small><h3>${p.title}</h3><p>${p.desc}</p><div>${p.tech.map(t=>`<span class="tag">${t}</span>`).join("")}</div><div style="margin-top:10px"><a href="${p.repo}" target="_blank" rel="noopener">📂 GitHub Repo</a>${p.live?`<a href="${p.live}" target="_blank" rel="noopener">🌐 Live App</a>`:""}</div></article>`).join("");
+  $("empty").style.display=list.length?"none":"block";
+}
+$("search").oninput=renderCards;renderChips();renderCards();
+
+/* Chatbot */
+const log=$("log");
+function add(txt,cls){const d=document.createElement("div");d.className="m "+cls;d.textContent=txt;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+async function ask(q){
+  add(q,"u");const wait=add("Reading the Poneglyphs...","b");
+  try{
+    const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q,context:CONFIG})});
+    const d=await r.json();
+    if(!r.ok)throw new Error(d.error||"Request failed");
+    wait.textContent=d.reply;
+  }catch(e){wait.className="m e";wait.textContent="⚠️ The Den Den Mushi lost signal: "+e.message+". Please try again in a moment."}
+  log.scrollTop=log.scrollHeight;
+}
+$("cf").onsubmit=e=>{e.preventDefault();const q=$("ci").value.trim();if(q){$("ci").value="";ask(q)}};
+$("sugg").innerHTML=["Who are you?","What are your skills?","What projects have you completed?","How does the reading list work?","Where is your GitHub?"].map(s=>`<button type="button">${s}</button>`).join("");
+document.querySelectorAll("#sugg button").forEach(b=>b.onclick=()=>ask(b.textContent));
+</script>
+</body>
+</html>
